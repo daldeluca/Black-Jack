@@ -26,7 +26,7 @@ Hand Game::getDealerHand(Deck& deck, Hand& hand) {
 }
 
 void Game::displayCards(Hand h, string who) {
-    cout << who << "Cards: " << endl;
+
     for (int i = 0; i < h.cardCount(); ++i) {
         h.displayCard(i);
     }
@@ -43,7 +43,7 @@ void Game::displayRound() {
     m_dealerHand.displayCard(0).getCard();
     cout << "\n\n";
 
-    cout << "Your ";
+    cout << "Your Cards: \n";
     displayCards(m_playerHand, "");
 
     // Player turn
@@ -54,7 +54,7 @@ void Game::displayRound() {
 
         if (choice == 'h') {
             m_playerHand += m_deck.dealCard();
-            cout << "\nYour ";
+            cout << "\nYour Cards: \n";
             displayCards(m_playerHand, "");
         } else if (choice == 's') {
             break;
@@ -120,7 +120,6 @@ void Game::playGame() {
 
         cout << "\nplay another round? (y/n): ";
         cin >> again;
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
         cout << endl;
 
     } while (again == 'y' || again == 'Y');
